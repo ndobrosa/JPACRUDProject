@@ -1,4 +1,4 @@
-package com.skilldistillery.bbplayers;
+package com.skilldistillery.bbplayers.data;
 
 import java.util.List;
 
