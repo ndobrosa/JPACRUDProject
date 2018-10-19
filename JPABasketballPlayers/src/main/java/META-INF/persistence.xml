@@ -7,6 +7,7 @@
   <persistence-unit name="BasketballPlayers">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
+    <class>com.skilldistillery.bbplayers.entities.Player</class>
 
     <properties>
       <property name="javax.persistence.jdbc.url"
