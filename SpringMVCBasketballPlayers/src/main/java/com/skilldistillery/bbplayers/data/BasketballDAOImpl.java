@@ -2,43 +2,58 @@ package com.skilldistillery.bbplayers.data;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.skilldistillery.bbplayers.entities.Player;
 
+
+@Transactional
+@Repository
 public class BasketballDAOImpl implements BasketballDAO {
+	
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public Player getPlayerById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Player player = em.find(Player.class, id);
+		return player;
 	}
-
+	
 	@Override
 	public List<Player> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String query = "select p from Player p";
+		List<Player> players = em.createQuery(query, Player.class).getResultList();
+		return players;
 	}
 
 	@Override
 	public Player add(Player player) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(player);
+		em.flush();
+		
+		return player;
+		
 	}
 
 	@Override
 	public Player update(Player player) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean delete(Player player) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean deleteById(int id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

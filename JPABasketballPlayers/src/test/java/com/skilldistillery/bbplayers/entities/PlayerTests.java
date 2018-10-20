@@ -1,5 +1,6 @@
 package com.skilldistillery.bbplayers.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
@@ -38,8 +39,14 @@ class PlayerTests {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test_Player_mappings() {
+		Player player = em.find(Player.class, 1);
+		assertEquals("Alex", player.getFirstName());
+		assertEquals("Abrines", player.getLastName());
+		assertEquals("G", player.getPosition());
+		assertEquals(25, player.getAge());
+		assertEquals("Oklahoma City Thunder", player.getTeam());
+		assertEquals("Spain", player.getNationality());
 	}
 
 }
