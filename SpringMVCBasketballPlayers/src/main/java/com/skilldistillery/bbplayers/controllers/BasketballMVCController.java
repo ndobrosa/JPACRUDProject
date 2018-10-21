@@ -14,12 +14,15 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.skilldistillery.bbplayers.data.BasketballDAO;
 import com.skilldistillery.bbplayers.entities.Player;
 
+
 @Controller
 public class BasketballMVCController {
 
+	//@Autowired Used to autowire BasketballDAOImpl repository, which implements BasketballDAO
 	@Autowired
 	BasketballDAO bdao;
 
+	//In web.xml homel.do is marked as the welcom file. The method below sets the homepage view to index.jsp
 	@RequestMapping(path = "home.do", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
@@ -28,17 +31,26 @@ public class BasketballMVCController {
 		// return "index"; // if using a ViewResolver.
 	}
 
+	// The method below handles the getPlayer.do request by taking a single parameter and returning a player object and setting a view to show.jsp.
 	@RequestMapping(path = "getPlayer.do", method = RequestMethod.GET)
 	public ModelAndView getPlayer(@RequestParam(value = "pid") int aid) {
 		ModelAndView mv = new ModelAndView();
 
+		//The player object is retrieved from a database by getPlayerById(int id) method method in the BasketballDAOImpl class.
 		Player player = bdao.getPlayerById(aid);
 
 		mv.addObject("player", player);
+		
+		
 		mv.setViewName("WEB-INF/views/show.jsp");
 		return mv;
 	}
 
+	
+	/* 
+	 * The method below retrieves a list of all rows (saved into player objects) from the database, passes the list to the  
+	 * front end ad an attribute and sets the view to show.jsp.
+	 */
 	@RequestMapping(path = "getAllPlayers.do", method = RequestMethod.GET)
 	public String getAllPlayers(Model model) {
 
@@ -50,11 +62,15 @@ public class BasketballMVCController {
 
 	}
 
+	/*
+	 * When the startPlayerCreation.do action is requested, the method below sets the view to createPlayer.jsp which allows the user to input
+	 * new player information. More info in the WEB-INF/views/createPlayer.jsp file. 
+	 */
 	@RequestMapping(path = "startPlayerCreation.do", method = RequestMethod.GET)
 	public String createPlayerPage() {
 		return "WEB-INF/views/createPlayer.jsp";
 	}
-
+	
 	@RequestMapping(path = "editPlayer.do", method = RequestMethod.GET)
 	public ModelAndView editPlayer(@RequestParam(value = "pid") int id) {
 		ModelAndView mv = new ModelAndView();
@@ -64,7 +80,10 @@ public class BasketballMVCController {
 		mv.setViewName("WEB-INF/views/createPlayer.jsp");
 		return mv;
 	}
-
+	
+	/*
+	 * 
+	 */
 	@RequestMapping(path = "newplayer.do", method = RequestMethod.POST)
 	public ModelAndView createPlayerResult(@RequestParam(value = "first_name") String firstName,
 			@RequestParam(value = "last_name") String lastName,

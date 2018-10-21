@@ -6,9 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>NBA Warm Welcome</title>
+<link rel="stylesheet" href="../css/customHeader.css">
 </head>
 <body>
 
+<div class="topnav">
+  <a class="home.do" href="home.do">Home</a>
+  <a href="getAllPlayers.do">Player List</a>
+  <a href="startPlayerCreation.do">Create a Player</a>
+ <!--  <a href="#about">About</a> -->
+</div>	
+<br>
 <%-- 	<c:if test=${playerDeleted }=='true'>
    	 	<p>Player Deleted</p>
 	</c:if> --%>

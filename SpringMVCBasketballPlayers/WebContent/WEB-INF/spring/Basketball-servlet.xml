@@ -17,6 +17,10 @@
 	<tx:annotation-driven
 		transaction-manager="myTransactionManager" />
 	<mvc:annotation-driven />
+	
+	<!-- Trying to make the CSS work  -->
+	<mvc:default-servlet-handler />
+	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
 
 
 	<bean id="myTransactionManager"
