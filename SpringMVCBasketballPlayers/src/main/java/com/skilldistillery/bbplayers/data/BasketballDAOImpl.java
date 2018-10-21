@@ -43,18 +43,38 @@ public class BasketballDAOImpl implements BasketballDAO {
 	}
 
 	@Override
-	public Player update(Player player) {
-		return null;
+	public Player update(Player inputPlayer) {
+		
+		Player editedPlayer = em.find(Player.class, inputPlayer.getId());
+		
+		editedPlayer.setAge(inputPlayer.getAge());
+		editedPlayer.setFirstName(inputPlayer.getFirstName());
+		editedPlayer.setLastName(inputPlayer.getLastName());
+		editedPlayer.setNationality(inputPlayer.getNationality());
+		editedPlayer.setPosition(inputPlayer.getPosition());
+		editedPlayer.setTeam(inputPlayer.getTeam());
+		
+		return editedPlayer;
 	}
 
-	@Override
-	public boolean delete(Player player) {
-		return false;
-	}
+//	@Override
+//	public boolean delete(Player player) {
+//		return false;
+//	}
 
 	@Override
 	public boolean deleteById(int id) {
-		return false;
+		Player player = em.find(Player.class, id);
+		
+		boolean isPlayerDeleted = false;
+		if(player != null) {
+			em.remove(player);
+			if (em.find(Player.class, id) == null) {
+				isPlayerDeleted = true;
+			}
+		}
+		
+		return isPlayerDeleted;
 	}
 
 }

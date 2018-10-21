@@ -17,12 +17,28 @@
 
 
 		<c:when test="${not empty player }">
-			<h2>${player.firstName }${player.lastName }</h2>
+			<h2>${player.firstName } &nbsp; ${player.lastName }</h2>
 			<p>Team: ${player.team }</p>
 			<p>Age: ${player.age }</p>
 			<p>Position: ${player.position }</p>
 			<p>Nationality: ${player.nationality }</p>
+
+			</form>
+			<br>
+			<form action="editPlayer.do" method="GET">
+				<input type="submit" value="Edit player" /> <input type="hidden"
+					value=${player.id } name="pid" />
+			</form>
+
+			</form>
+			<br>
+			<form action="deletePlayer.do" method="POST">
+				<input type="submit" value="Delete player" /> <input type="hidden"
+					value=${player.id } name="pid" />
+			</form>
 		</c:when>
+
+
 
 
 		<c:when test="${not empty players }">
@@ -31,6 +47,17 @@
 				<ul>
 					<a href="getPlayer.do?pid=${p.id }">${p.firstName }
 						${p.lastName }</a>
+					</form>
+
+					<form action="editPlayer.do" method="GET">
+						<input type="submit" value="Edit player" /> <input type="hidden" value=${p.id } name="pid" />
+					</form>
+
+					<form action="deletePlayer.do" method="POST">
+						<input type="submit" value="Delete player" /> 
+						<input type="hidden" value=${p.id } name="pid" />
+					</form>
+
 					<br>
 				</ul>
 				<%-- <h3>More Options</h3>
@@ -47,10 +74,12 @@
 				<hr>
 			</c:forEach>
 		</c:when>
-		
+
 		<c:otherwise>
-           	<h1> Sorry, but... <br> Your Request Failed Miserably...</h1>
-         </c:otherwise>
+			<h1>
+				Sorry, but... <br> Your Request Failed Miserably...
+			</h1>
+		</c:otherwise>
 
 
 

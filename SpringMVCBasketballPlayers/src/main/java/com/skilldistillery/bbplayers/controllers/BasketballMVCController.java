@@ -55,6 +55,16 @@ public class BasketballMVCController {
 		return "WEB-INF/views/createPlayer.jsp";
 	}
 
+	@RequestMapping(path = "editPlayer.do", method = RequestMethod.GET)
+	public ModelAndView editPlayer(@RequestParam(value = "pid") int id) {
+		ModelAndView mv = new ModelAndView();
+		Player player = bdao.getPlayerById(id);
+
+		mv.addObject("player", player);
+		mv.setViewName("WEB-INF/views/createPlayer.jsp");
+		return mv;
+	}
+
 	@RequestMapping(path = "newplayer.do", method = RequestMethod.POST)
 	public ModelAndView createPlayerResult(@RequestParam(value = "first_name") String firstName,
 			@RequestParam(value = "last_name") String lastName,
@@ -69,8 +79,7 @@ public class BasketballMVCController {
 		player.setLastName(lastName);
 		player.setAge(age);
 		player.setNationality(nationality);
-		
-		
+
 		if (team != null && team != "") {
 			player.setTeam(team);
 		}
@@ -78,8 +87,6 @@ public class BasketballMVCController {
 			player.setPosition(position);
 		}
 
-		System.out.println("***************************************************************************************************");
-		System.out.println(player);
 		player = bdao.add(player);
 
 		mv.addObject("player", player);
@@ -88,5 +95,66 @@ public class BasketballMVCController {
 		return mv;
 	}
 
+	@RequestMapping(path = "confirmedit.do", method = RequestMethod.POST)
+	public ModelAndView updatePlayer(
+			@RequestParam(value = "pid") int id,
+			@RequestParam(value = "first_name") String firstName,
+			@RequestParam(value = "last_name") String lastName,
+			@RequestParam(value = "position", required = false) String position, @RequestParam(value = "age") int age,
+			@RequestParam(value = "team", required = false) String team,
+			@RequestParam(value = "nationality") String nationality) {
+		ModelAndView mv = new ModelAndView();
 
+		Player player = bdao.getPlayerById(id);
+
+		player.setFirstName(firstName);
+		player.setLastName(lastName);
+		player.setAge(age);
+		player.setNationality(nationality);
+
+		if (team != null) {
+			player.setTeam(team);
+		}
+		if (position != null) {
+			player.setPosition(position);
+		}
+
+
+		player = bdao.update(player);
+
+		mv.addObject("player", player);
+		mv.setViewName("redirect:getPlayer.do?pid=" + player.getId());
+
+		return mv;
+
+	}
+	
+	@RequestMapping(path = "deletePlayer.do", method = RequestMethod.POST)
+	public ModelAndView deletePlayer(
+			@RequestParam(value = "pid") int id) {
+		ModelAndView mv = new ModelAndView();
+		 
+		Boolean wasPlayerDeleted = bdao.deleteById(id);
+		
+		System.out.println(wasPlayerDeleted);
+		
+//		mv.addObject("playerDeleted", wasPlayerDeleted);
+		mv.setViewName("redirect:confirmDeletion.do?playerDeleted=" + wasPlayerDeleted.toString());
+		
+		return mv;
+	}
+	
+	@RequestMapping(path = "confirmDeletion.do", method = RequestMethod.GET)
+	public String confirmPlayerDelted(Model model,@RequestParam(value = "playerDeleted") boolean playerDeleted) {
+		model.addAttribute("playerDeleted", playerDeleted);
+		
+		
+		return "WEB-INF/views/index.jsp";
+	}
+	
+	
+	
+	
+	
+	
 }
