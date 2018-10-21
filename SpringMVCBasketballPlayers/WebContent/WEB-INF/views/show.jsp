@@ -10,14 +10,22 @@
 <title>Search Result</title>
 </head>
 <body>
+<center>
 
+	<div class="topnav">
+		<a class="home.do" href="home.do">Home</a>&emsp; <a
+			href="getAllPlayers.do">Player List</a>&emsp; <a
+			href="startPlayerCreation.do">Create a Player</a>
+		<!--  <a href="#about">About</a> -->
+	</div>
+	<br>
 	<c:choose>
 
 
 
 
 		<c:when test="${not empty player }">
-			<h2>${player.firstName } &nbsp; ${player.lastName }</h2>
+			<h2>${player.firstName }&nbsp; ${player.lastName }</h2>
 			<p>Team: ${player.team }</p>
 			<p>Age: ${player.age }</p>
 			<p>Position: ${player.position }</p>
@@ -50,12 +58,13 @@
 					</form>
 
 					<form action="editPlayer.do" method="GET">
-						<input type="submit" value="Edit player" /> <input type="hidden" value=${p.id } name="pid" />
+						<input type="submit" value="Edit player" /> <input type="hidden"
+							value=${p.id } name="pid" />
 					</form>
 
 					<form action="deletePlayer.do" method="POST">
-						<input type="submit" value="Delete player" /> 
-						<input type="hidden" value=${p.id } name="pid" />
+						<input type="submit" value="Delete player" /> <input
+							type="hidden" value=${p.id } name="pid" />
 					</form>
 
 					<br>
@@ -87,5 +96,6 @@
 
 
 	</c:choose>
+	</center>
 </body>
 </html>

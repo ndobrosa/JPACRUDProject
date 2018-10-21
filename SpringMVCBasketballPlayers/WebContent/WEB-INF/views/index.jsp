@@ -10,9 +10,10 @@
 </head>
 <body>
 
+<center>
 <div class="topnav">
-  <a class="home.do" href="home.do">Home</a>
-  <a href="getAllPlayers.do">Player List</a>
+  <a class="home.do" href="home.do">Home</a>&emsp;
+  <a href="getAllPlayers.do">Player List</a>&emsp;
   <a href="startPlayerCreation.do">Create a Player</a>
  <!--  <a href="#about">About</a> -->
 </div>	
@@ -42,6 +43,6 @@
 			value="Add a Player" />
 	</form>
 
-
+</center>
 </body>
 </html>
