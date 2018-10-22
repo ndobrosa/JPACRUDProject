@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>NBA Warm Welcome</title>
-<link rel="stylesheet" href="../css/customHeader.css">
+<link rel="stylesheet" href="css/customHeader.css">
 </head>
 <body>
 
@@ -31,6 +31,13 @@
 	<form action="getPlayer.do" method="GET">
 		<input type="number" name="pid" required/> <input type="submit"
 			value="Find Player by ID" />
+	</form>
+	<br>
+	
+	
+	<form action="findPlayerByName.do" method="GET">
+		<input type="text" name="pname" required/> <input type="submit"
+			value="Find Player by Name" />
 	</form>
 	<br>
 	<form action="getAllPlayers.do" method="GET">

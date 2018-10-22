@@ -56,6 +56,8 @@ public class BasketballDAOImpl implements BasketballDAO {
 		
 		return editedPlayer;
 	}
+	
+	
 
 //	@Override
 //	public boolean delete(Player player) {
@@ -75,6 +77,13 @@ public class BasketballDAOImpl implements BasketballDAO {
 		}
 		
 		return isPlayerDeleted;
+	}
+
+	@Override
+	public List<Player> getPlayerByName(String inputName) {
+		String query = "select p from Player p where firstName like :name or lastName like :name";
+		List<Player> players = em.createQuery(query, Player.class).setParameter("name", "%" +inputName + "%").getResultList();
+		return players;
 	}
 
 }

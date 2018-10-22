@@ -41,3 +41,14 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'bbuser'@'localhost'
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `player`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `BasketballPlayerDB`;
+INSERT INTO `player` (`id`, `first_name`, `last_name`, `position`, `age`, `team`, `nationality`) VALUES (1, 'Boban', 'Marjanovic', 'C', 30, 'LA Clippers', 'Serbia');
+INSERT INTO `player` (`id`, `first_name`, `last_name`, `position`, `age`, `team`, `nationality`) VALUES (2, 'Nikola', 'Jokic', 'C', 22, 'Denver Nuggets', 'Serbia');
+
+COMMIT;
+

@@ -165,6 +165,17 @@ public class BasketballMVCController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "findPlayerByName.do", method = RequestMethod.GET)
+	public ModelAndView findPlayerByName(@RequestParam(value = "pname") String name) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<Player> players = bdao.getPlayerByName(name);
+		mv.addObject("players", players);
+		mv.setViewName("WEB-INF/views/show.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path = "confirmDeletion.do", method = RequestMethod.GET)
 	public String confirmPlayerDelted(Model model,@RequestParam(value = "playerDeleted") boolean playerDeleted) {
 		model.addAttribute("playerDeleted", playerDeleted);

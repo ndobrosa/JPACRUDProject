@@ -11,5 +11,6 @@ public interface BasketballDAO {
 	Player update(Player player);
 //	boolean delete(Player player);
 	boolean deleteById(int id);
+	List<Player> getPlayerByName(String Name);
 	
 }
