@@ -35,6 +35,9 @@ The user can choose to edit any player that he or she searched for by id, that i
 
 Once the user is satisfied with the changes, they can press the edit player button which will display the new information.
 
+#### Removing a player
+On the same pages that give user the option to update the player, the user can also choose to remove a player which will delete the entry from the database. A confirmation or an error is displayed once delete button is pressed.
+
 
 ### Building Blocks
 The database holds a number of NBA players in a "Player" table. The table has the following fields:
