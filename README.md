@@ -69,3 +69,7 @@ The front-end is made out of simple JSP files.
 * Got comfortable with building a web application with SpringMVC.
 * Improved understanding of how DB, mid-layer, and front-end work together.
 * Improved SQL and JPQL language proficiency
+
+### Stretch Goals
+* Add more JUnit tests
+* Add teams table
