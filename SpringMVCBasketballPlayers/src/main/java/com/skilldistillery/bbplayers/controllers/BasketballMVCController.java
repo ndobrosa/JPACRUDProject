@@ -82,7 +82,7 @@ public class BasketballMVCController {
 	}
 	
 	/*
-	 * 
+	 * This method adds a new player to the database based on parameters collected from the form.
 	 */
 	@RequestMapping(path = "newplayer.do", method = RequestMethod.POST)
 	public ModelAndView createPlayerResult(@RequestParam(value = "first_name") String firstName,
@@ -113,7 +113,8 @@ public class BasketballMVCController {
 
 		return mv;
 	}
-
+	
+	//This method edits a column values of a player in the database.
 	@RequestMapping(path = "confirmedit.do", method = RequestMethod.POST)
 	public ModelAndView updatePlayer(
 			@RequestParam(value = "pid") int id,
@@ -148,6 +149,7 @@ public class BasketballMVCController {
 
 	}
 	
+	// This method removes a player from the database.
 	@RequestMapping(path = "deletePlayer.do", method = RequestMethod.POST)
 	public ModelAndView deletePlayer(
 			@RequestParam(value = "pid") int id) {
