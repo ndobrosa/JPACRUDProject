@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Player Info</title>
+<link rel="stylesheet" href="css/customHeader.css">
 </head>
 <body>
 <center>

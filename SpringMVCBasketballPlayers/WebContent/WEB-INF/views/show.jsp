@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Result</title>
+<link rel="stylesheet" href="css/customHeader.css">
 </head>
 <body>
 <center>

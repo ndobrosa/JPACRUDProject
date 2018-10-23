@@ -17,6 +17,7 @@
   <a href="startPlayerCreation.do">Create a Player</a>
  <!--  <a href="#about">About</a> -->
 </div>	
+<h1>NBA Player Manger</h1>
 <br>
 <%-- 	<c:if test=${playerDeleted }=='true'>
    	 	<p>Player Deleted</p>
